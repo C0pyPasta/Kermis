@@ -1,16 +1,22 @@
 package Kermis.com.roy;
 
 import java.util.Scanner;
+import Kermis.com.roy.attractieclasses.*;
 
 public class Applicatie 
 {
-	private static void main(String[] args)
+	Botsauto bots = new Botsauto();
+	Spin spin = new Spin();
+	
+	
+	public static void main(String[] args)
 	{
+		Applicatie app = new Applicatie();
 		Scanner scanner = new Scanner(System.in);
 		Menu();
 		
 		int num = scanner.nextInt();
-		Keuze(num);
+		app.Keuze(num);
 	}
 	
 	private static void Menu()
@@ -25,14 +31,28 @@ public class Applicatie
 		System.out.println("6: Ladderklimmen");
 	}
 	
-	private static void Keuze(int num)
+	private void Keuze(int num)
 	{
 		switch(num)
 		{
-		case 1:
-			// code
-			break;
-			
+			case 1:
+				bots.draaien();
+				break;
+			case 2:
+				spin.draaien();
+				break;
+			case 3:
+				// code
+				break;
+			case 4:
+				// code
+				break;
+			case 5:
+				// code
+				break;
+			case 6:
+				// code
+				break;
 		}
 	}
 }
