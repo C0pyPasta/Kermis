@@ -9,7 +9,6 @@ public class Main {
 }
 
 class Kermis {
-
     private String keuze;
     private boolean noChoice = false;
 
