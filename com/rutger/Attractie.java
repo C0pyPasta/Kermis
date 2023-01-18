@@ -1,4 +1,4 @@
-package com.rutger;
+package Kermis.com.rutger;
 
 abstract class Attractie {
     private String name;
