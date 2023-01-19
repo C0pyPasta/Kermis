@@ -18,8 +18,6 @@ public class Botsauto extends Attractie
 		return kaartjesVerkocht;
 	}
 	
-	
-	
 	public Botsauto()
 	{
 		naam = "Botsauto";

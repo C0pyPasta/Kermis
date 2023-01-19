@@ -2,11 +2,11 @@ package Kermis.com.roy.attractieclasses;
 
 public class Spookhuis extends Attractie
 {
-	public String naam;
-	public double prijs;
-	public int oppervlakte;
-	public double omzet;
-	public int kaartjesVerkocht;
+	private String naam;
+	private double prijs;
+	private int oppervlakte;
+	private static double omzet;
+	private static int kaartjesVerkocht;
 	
 	public double getOmzet()
 	{
@@ -23,8 +23,6 @@ public class Spookhuis extends Attractie
 		naam = "Spookhuis";
 		prijs = 3.20d;
 		oppervlakte = 30;
-		omzet = 0;
-		kaartjesVerkocht = 0;
 	}
 	
 	
