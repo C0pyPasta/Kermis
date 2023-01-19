@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Kermis.keuzeMenu();
     }
 }
@@ -85,6 +86,5 @@ class Kermis {
         System.out.println("------------------------------------");
 
         new Kermis(); //Maar wil je wel elke keer een nieuwe kermis aanmaken?
-        
     }
 }
