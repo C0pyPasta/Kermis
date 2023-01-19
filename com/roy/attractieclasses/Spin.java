@@ -1,6 +1,8 @@
 package Kermis.com.roy.attractieclasses;
 
-public class Spin extends Attractie
+import Kermis.com.roy.interfaces.*;
+
+public class Spin extends Attractie implements GokAttractie
 {
 	private String naam;
 	private double prijs;
@@ -8,15 +10,26 @@ public class Spin extends Attractie
 	private static double omzet = 0;
 	private static int kaartjesVerkocht = 0;
 	private int draaiLimiet = 5;
+	private static double belasting = 0;
 	
-	public double getOmzet()
+	public static double getOmzet()
 	{
 		return omzet;
 	}
 	
-	public int getKaartjesVerkocht()
+	public static int getKaartjesVerkocht()
 	{
 		return kaartjesVerkocht;
+	}
+	
+	public static double getBelasting()
+	{
+		return belasting;
+	}
+	
+	public static void setBelasting()
+	{
+		belasting = 0;
 	}
 	
 	public Spin()
@@ -47,6 +60,7 @@ public class Spin extends Attractie
 	public void opstellingsKeuring()
 	{
 		System.out.println("De Spin attractie is goedgekeurd.");
+		System.out.println(" ");
 	}
 	
 	private void onderhoudsbeurt()
@@ -56,5 +70,10 @@ public class Spin extends Attractie
 		System.out.println("Fix..Fix..Fix..Fix..Fix..");
 		System.out.println("Onderhoudsbeurt is klaar!");
 		draaiLimiet = 5;
+	}
+	
+	public static void kansSpelBelastingBetalen() 
+	{
+		belasting = (omzet / 100) * 30;
 	}
 }

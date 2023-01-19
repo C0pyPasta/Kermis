@@ -9,12 +9,12 @@ public class Hawaii extends Attractie
 	private static int kaartjesVerkocht = 0;
 	private int draaiLimiet = 10;
 	
-	public double getOmzet()
+	public static double getOmzet()
 	{
 		return omzet;
 	}
 	
-	public int getKaartjesVerkocht()
+	public static int getKaartjesVerkocht()
 	{
 		return kaartjesVerkocht;
 	}
@@ -46,6 +46,7 @@ public class Hawaii extends Attractie
 	public void opstellingsKeuring()
 	{
 		System.out.println("De Hawaii attractie is goedgekeurd.");
+		System.out.println(" ");
 	}
 	
 	private void onderhoudsbeurt()

@@ -1,21 +1,17 @@
-package Kermis.centraal;
+package Kermis.com.roy.centraal;
 
 import Kermis.com.roy.attractieclasses.*;
 
 public class Kassa 
 {
 
-	Botsauto bots = new Botsauto();
-	Spin spin = new Spin();
-	Spiegelpaleis spiegel = new Spiegelpaleis();
-	Spookhuis spook = new Spookhuis();
-	Hawaii hawaii = new Hawaii();
-	Ladderklimmen ladder = new Ladderklimmen();
+	Botsauto bots;
+	Spin spin;
+	Spiegelpaleis spiegel;
+	Spookhuis spook;
+	Hawaii hawaii;
+	Ladderklimmen ladder;
 
-
-	
-	
-	
 	double omzetHeleKermis;
 	int totaalAantalVerkochteKaartjes;
 	int kaartjesBotsauto;
@@ -24,6 +20,8 @@ public class Kassa
 	int kaartjesSpookhuis;
 	int kaartjesHawaii;
 	int kaartjesLadderklimmen;
+	public static int aantalKeerDatBelastingInspecteurIsLangsGeweest = 0;
+	
 
 	public Kassa()
 	{		
@@ -33,24 +31,24 @@ public class Kassa
 	
 	public void TotaalOmzetKermis()
 	{
-		omzetHeleKermis += bots.getOmzet();
-		omzetHeleKermis += spin.getOmzet();
-		omzetHeleKermis += spiegel.getOmzet();
-		omzetHeleKermis += spook.getOmzet();
-		omzetHeleKermis += hawaii.getOmzet();
-		omzetHeleKermis += ladder.getOmzet();
+		omzetHeleKermis += Botsauto.getOmzet();
+		omzetHeleKermis += Spin.getOmzet();
+		omzetHeleKermis += Spiegelpaleis.getOmzet();
+		omzetHeleKermis += Spookhuis.getOmzet();
+		omzetHeleKermis += Hawaii.getOmzet();
+		omzetHeleKermis += Ladderklimmen.getOmzet();
 		
 		System.out.println("De totaal omzet van de hele kermis is: " + omzetHeleKermis);
 	}
 	
 	public void Kaartjes()
 	{
-		kaartjesBotsauto = bots.getKaartjesVerkocht();
-		kaartjesSpin = spin.getKaartjesVerkocht();
-		kaartjesSpiegelpaleis = spiegel.getKaartjesVerkocht();
-		kaartjesSpookhuis = spook.getKaartjesVerkocht();
-		kaartjesHawaii = hawaii.getKaartjesVerkocht();
-		kaartjesLadderklimmen = ladder.getKaartjesVerkocht();
+		kaartjesBotsauto = Botsauto.getKaartjesVerkocht();
+		kaartjesSpin = Spin.getKaartjesVerkocht();
+		kaartjesSpiegelpaleis = Spiegelpaleis.getKaartjesVerkocht();
+		kaartjesSpookhuis = Spookhuis.getKaartjesVerkocht();
+		kaartjesHawaii = Hawaii.getKaartjesVerkocht();
+		kaartjesLadderklimmen = Ladderklimmen.getKaartjesVerkocht();
 		
 		totaalAantalVerkochteKaartjes = kaartjesBotsauto + kaartjesSpin + kaartjesSpiegelpaleis + kaartjesSpookhuis + kaartjesHawaii + kaartjesLadderklimmen;
 		

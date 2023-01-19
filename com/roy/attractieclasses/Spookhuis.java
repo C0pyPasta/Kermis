@@ -8,12 +8,12 @@ public class Spookhuis extends Attractie
 	private static double omzet;
 	private static int kaartjesVerkocht;
 	
-	public double getOmzet()
+	public static double getOmzet()
 	{
 		return omzet;
 	}
 	
-	public int getKaartjesVerkocht()
+	public static int getKaartjesVerkocht()
 	{
 		return kaartjesVerkocht;
 	}
