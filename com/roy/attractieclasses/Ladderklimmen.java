@@ -1,6 +1,6 @@
 package Kermis.com.roy.attractieclasses;
 
-import Kermis.interfaces.*;
+import Kermis.com.roy.interfaces.*;
 
 public class Ladderklimmen extends Attractie implements IBelasting
 {

@@ -2,7 +2,7 @@ package Kermis.com.roy;
 
 import java.util.Scanner;
 import Kermis.com.roy.attractieclasses.*;
-import Kermis.centraal.*;
+import Kermis.com.roy.centraal.*;
 
 public class Applicatie 
 {

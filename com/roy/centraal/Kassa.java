@@ -1,4 +1,4 @@
-package Kermis.centraal;
+package Kermis.com.roy.centraal;
 
 import Kermis.com.roy.attractieclasses.*;
 
