@@ -2,11 +2,11 @@ package Kermis.com.roy.attractieclasses;
 
 public class Spiegelpaleis extends Attractie
 {
-	public String naam;
-	public double prijs;
-	public int oppervlakte;
-	public double omzet;
-	public int kaartjesVerkocht;
+	private String naam;
+	private double prijs;
+	private int oppervlakte;
+	private static double omzet = 0;
+	private static int kaartjesVerkocht = 0;
 	
 	public double getOmzet()
 	{
@@ -23,8 +23,6 @@ public class Spiegelpaleis extends Attractie
 		naam = "Spiegelpaleis";
 		prijs = 2.75d;
 		oppervlakte = 50;
-		omzet = 0;
-		kaartjesVerkocht = 0;
 	}
 	
 	

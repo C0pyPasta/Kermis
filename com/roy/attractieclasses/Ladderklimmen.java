@@ -2,11 +2,11 @@ package Kermis.com.roy.attractieclasses;
 
 public class Ladderklimmen extends Attractie
 {
-	public String naam;
-	public double prijs;
-	public int oppervlakte;
-	public double omzet;
-	public int kaartjesVerkocht;
+	private String naam;
+	private double prijs;
+	private int oppervlakte;
+	private static double omzet = 0;
+	private static int kaartjesVerkocht = 0;
 	
 	public double getOmzet()
 	{
@@ -23,8 +23,6 @@ public class Ladderklimmen extends Attractie
 		naam = "Ladderklimmen";
 		prijs = 5.0d;
 		oppervlakte = 1;
-		omzet = 0;
-		kaartjesVerkocht = 0;
 	}
 	
 	public void draaien()
