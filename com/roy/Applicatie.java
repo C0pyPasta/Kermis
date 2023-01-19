@@ -18,6 +18,8 @@ public class Applicatie
 	static String keuze;
 	static boolean programRunning = true;
 	
+	static int rondjesVoorBelastingInspecteur = 0;
+	
 	
 	public static void main(String[] args)
 	{
@@ -27,6 +29,16 @@ public class Applicatie
 		
 		while(programRunning)
 		{
+			if(rondjesVoorBelastingInspecteur >= 15)
+			{
+				BelastingInspecteur belastingInspecteur = new BelastingInspecteur();
+				Kassa.aantalKeerDatBelastingInspecteurIsLangsGeweest++;
+				belastingInspecteur.CheckGokAttractie();
+				
+				rondjesVoorBelastingInspecteur = 0;
+			}
+			
+			
 			Menu();
 			keuze = scanner.next();
 			app.Keuze(keuze);
@@ -98,10 +110,12 @@ public class Applicatie
 				kassa.Kaartjes();
 				break;
 			case "q":
+				System.out.println("Het programma is gestopt...");
 				System.exit(0);
 				break;
 		}
 		
+		rondjesVoorBelastingInspecteur++;
 
 	}
 }

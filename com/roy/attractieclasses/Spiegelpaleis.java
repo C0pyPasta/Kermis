@@ -8,12 +8,12 @@ public class Spiegelpaleis extends Attractie
 	private static double omzet = 0;
 	private static int kaartjesVerkocht = 0;
 	
-	public double getOmzet()
+	public static double getOmzet()
 	{
 		return omzet;
 	}
 	
-	public int getKaartjesVerkocht()
+	public static int getKaartjesVerkocht()
 	{
 		return kaartjesVerkocht;
 	}

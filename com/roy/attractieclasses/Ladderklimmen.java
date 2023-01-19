@@ -2,23 +2,33 @@ package Kermis.com.roy.attractieclasses;
 
 import Kermis.com.roy.interfaces.*;
 
-public class Ladderklimmen extends Attractie implements IBelasting
+public class Ladderklimmen extends Attractie implements GokAttractie
 {
 	private String naam;
 	private double prijs;
 	private int oppervlakte;
 	private static double omzet = 0;
 	private static int kaartjesVerkocht = 0;
-	private double belasting;
+	private static double belasting = 0;
 	
-	public double getOmzet()
+	public static double getOmzet()
 	{
 		return omzet;
 	}
 	
-	public int getKaartjesVerkocht()
+	public static int getKaartjesVerkocht()
 	{
 		return kaartjesVerkocht;
+	}
+	
+	public static double getBelasting()
+	{
+		return belasting;
+	}
+	
+	public static void setBelasting()
+	{
+		belasting = 0;
 	}
 	
 	public Ladderklimmen()
@@ -35,7 +45,7 @@ public class Ladderklimmen extends Attractie implements IBelasting
 		kaartjesVerkocht++;
 	}
 	
-	public void kansSpelBelastingBetalen()
+	public static void kansSpelBelastingBetalen()
 	{
 		belasting = (omzet / 100) * 30;
 	}
