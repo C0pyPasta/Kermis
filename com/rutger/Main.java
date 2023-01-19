@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Kermis.keuzeMenu();
     }
 }
 
 class Kermis {
-
     private String keuze;
     private boolean noChoice = false;
 
@@ -86,6 +86,5 @@ class Kermis {
         System.out.println("------------------------------------");
 
         new Kermis(); //Maar wil je wel elke keer een nieuwe kermis aanmaken?
-        
     }
 }
