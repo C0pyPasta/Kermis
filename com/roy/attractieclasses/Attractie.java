@@ -1,9 +1,13 @@
 package Kermis.com.roy.attractieclasses;
 
-public class Attractie 
+public abstract class Attractie
 {
-	void draaien()
-	{
-		
-	}
+	public String naam;
+	public double prijs;
+	public int oppervlakte;
+	public double omzet;
+	public int kaartjesVerkocht;
+	
+	
+	abstract void draaien();
 }

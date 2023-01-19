@@ -1,6 +1,6 @@
 package Kermis.com.roy.attractieclasses;
 
-public class Spin extends Attractie
+public class Ladderklimmen extends Attractie
 {
 	public String naam;
 	public double prijs;
@@ -8,15 +8,15 @@ public class Spin extends Attractie
 	public double omzet;
 	public int kaartjesVerkocht;
 	
-	public Spin()
+	public Ladderklimmen()
 	{
-		naam = "Spin";
-		prijs = 2.25d;
+		naam = "Ladderklimmen";
+		prijs = 5.0d;
 		oppervlakte = 1;
 	}
 	
 	public void draaien()
 	{
-		System.out.println("De Spin draait!");
+		System.out.println("Ik draai ondersteboven tijdens het ladderklimmen");
 	}
 }

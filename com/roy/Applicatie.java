@@ -7,6 +7,10 @@ public class Applicatie
 {
 	Botsauto bots = new Botsauto();
 	Spin spin = new Spin();
+	Spiegelpaleis spiegel = new Spiegelpaleis();
+	Spookhuis spook = new Spookhuis();
+	Hawaii hawaii = new Hawaii();
+	Ladderklimmen ladder = new Ladderklimmen();
 	
 	
 	public static void main(String[] args)
@@ -42,16 +46,16 @@ public class Applicatie
 				spin.draaien();
 				break;
 			case 3:
-				// code
+				spiegel.draaien();
 				break;
 			case 4:
-				// code
+				spook.draaien();
 				break;
 			case 5:
-				// code
+				hawaii.draaien();
 				break;
 			case 6:
-				// code
+				ladder.draaien();
 				break;
 		}
 	}
