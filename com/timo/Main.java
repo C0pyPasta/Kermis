@@ -12,8 +12,8 @@ public class Main {
 	static public void startMenu() {
 		System.out.println("What would you like to do?");
 		System.out.println("1 | Go to the carnival");
-		System.out.println("2 | Enter backend");
-		System.out.println("3 | Leave circus");
+		System.out.println("2 | Staff only");
+		System.out.println("3 | Leave carnival");
 		String menuChoice = input.next();
 		
 		switch (menuChoice) {
@@ -133,7 +133,7 @@ class Kermis {
 				Main.startMenu();
 				break;
 			default: 
-				System.out.println("Wrong input! Please enter a number!");
+				System.out.println("Wrong input! You thought bashing keys would get you anywhere?");
 				menu();
 				break;
 		}
@@ -150,40 +150,10 @@ class Kermis {
 		
 		switch (menuChoice) {
 		case "o":
-			System.out.println("Revenue");
-			System.out.println("Nr| Attraction                     | Revenue generated            ");
-			System.out.println("1 | " + bumperCars.getName() + "               | €" + bumperCars.cashRegister.getRevenue());
-			System.out.println("2 | " + turboSpin.getName() + "                     | €" + turboSpin.cashRegister.getRevenue());
-			System.out.println("3 | " + mirrorPalace.getName() + "       | €" + mirrorPalace.cashRegister.getRevenue());
-			System.out.println("4 | " + hauntedHouse.getName() + " | €" + hauntedHouse.cashRegister.getRevenue());
-			System.out.println("5 | " + hawaii.getName() + "                | €" + hawaii.cashRegister.getRevenue());
-			System.out.println("6 | " + ladders.getName() + "               | €" + ladders.cashRegister.getRevenue());
-			System.out.println("-------------------------------------------------------------------------------");
-			System.out.println("Total revenue generated            | €" + CashRegister.getTotalRevenue());
-			System.out.println(" ");
-			System.out.println("Press 'b' to go back");
-			String input = Main.input.next();
-			if (input.equals("b")) {
-				backEnd();
-			}
+			showRevenue();
 			break;
 		case "k": 
-			System.out.println("Ticketsales");
-			System.out.println("Nr| Attraction                     | Tickets sold            ");
-			System.out.println("1 | " + bumperCars.getName() + "               | " + bumperCars.cashRegister.getTicketsSold());
-			System.out.println("2 | " + turboSpin.getName() + "                     | " + turboSpin.cashRegister.getTicketsSold());
-			System.out.println("3 | " + mirrorPalace.getName() + "       | " + mirrorPalace.cashRegister.getTicketsSold());
-			System.out.println("4 | " + hauntedHouse.getName() + " | " + hauntedHouse.cashRegister.getTicketsSold());
-			System.out.println("5 | " + hawaii.getName() + "                | " + hawaii.cashRegister.getTicketsSold());
-			System.out.println("6 | " + ladders.getName() + "               | " + ladders.cashRegister.getTicketsSold());
-			System.out.println("-------------------------------------------------------------------------------");
-			System.out.println("Total number of tickets sold       | " + CashRegister.getTotalTicketsSold()); 
-			System.out.println(" ");
-			System.out.println("Press 'b' to go back");
-			String input2 = Main.input.next();
-			if (input2.equals("b")) {
-				backEnd();
-			}
+			showTicketSales();
 			break;
 		case "b": 
 			Main.startMenu();
@@ -193,6 +163,50 @@ class Kermis {
 			System.out.println("Try again.");
 			backEnd();
 			break;
+		}
+	}
+	
+	public void showTicketSales() {
+		System.out.println("Ticketsales");
+		System.out.println("Nr| Attraction                     | Tickets sold            ");
+		System.out.println("1 | " + bumperCars.getName() + "               | " + bumperCars.cashRegister.getTicketsSold());
+		System.out.println("2 | " + turboSpin.getName() + "                     | " + turboSpin.cashRegister.getTicketsSold());
+		System.out.println("3 | " + mirrorPalace.getName() + "       | " + mirrorPalace.cashRegister.getTicketsSold());
+		System.out.println("4 | " + hauntedHouse.getName() + " | " + hauntedHouse.cashRegister.getTicketsSold());
+		System.out.println("5 | " + hawaii.getName() + "                | " + hawaii.cashRegister.getTicketsSold());
+		System.out.println("6 | " + ladders.getName() + "               | " + ladders.cashRegister.getTicketsSold());
+		System.out.println("----------------------------------------------------");
+		System.out.println("Total number of tickets sold       | " + CashRegister.getTotalTicketsSold()); 
+		System.out.println(" ");
+		System.out.println("Press 'o' for revenue");
+		System.out.println("Press 'b' to go back");
+		String input2 = Main.input.next();
+		if (input2.toLowerCase().equals("b")) {
+			backEnd();
+		} else if (input2.toLowerCase().equals("o")) {
+			showRevenue();
+		}
+	}
+	
+	public void showRevenue() {
+		System.out.println("Revenue");
+		System.out.println("Nr| Attraction                     | Revenue generated            ");
+		System.out.println("1 | " + bumperCars.getName() + "               | €" + bumperCars.cashRegister.getRevenue());
+		System.out.println("2 | " + turboSpin.getName() + "                     | €" + turboSpin.cashRegister.getRevenue());
+		System.out.println("3 | " + mirrorPalace.getName() + "       | €" + mirrorPalace.cashRegister.getRevenue());
+		System.out.println("4 | " + hauntedHouse.getName() + " | €" + hauntedHouse.cashRegister.getRevenue());
+		System.out.println("5 | " + hawaii.getName() + "                | €" + hawaii.cashRegister.getRevenue());
+		System.out.println("6 | " + ladders.getName() + "               | €" + ladders.cashRegister.getRevenue());
+		System.out.println("----------------------------------------------------");
+		System.out.println("Total revenue generated            | €" + CashRegister.getTotalRevenue());
+		System.out.println(" ");
+		System.out.println("Press 'k' for ticketsales");
+		System.out.println("Press 'b' to go back");
+		String input = Main.input.next();
+		if (input.toLowerCase().equals("b")) {
+			backEnd();
+		} else if (input.toLowerCase().equals("k")) {
+			showTicketSales();
 		}
 	}
 }

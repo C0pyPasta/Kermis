@@ -4,6 +4,7 @@ abstract class Attractie {
 	private String name;
 	private double price;
 	private double surfaceArea;
+
 	public CashRegister cashRegister = new CashRegister();
 		
 	abstract void play();
@@ -39,9 +40,24 @@ class Ultrabumpercars extends Attractie {
 	}
 }
 
-class Turbospin extends Attractie {
+class Turbospin extends RiskAttraction {
+	public int limit = 0;
 	void play() {
-		System.out.println(this.getName() + " is spinning");
+		if (limit < 4) {
+			System.out.println(this.getName() + " is spinning");
+			limit++;
+		} else {
+			System.out.println("As " + this.getName() + " was spinning, nuts and bolts started flying around.");
+			setUpInspection();
+			limit = 0;
+		}
+	}
+	
+	void setUpInspection() {
+		System.out.println("MAINTENANCE AND INSPECTION!");
+		System.out.println("Inspector wallace grabs his checklist...");
+		System.out.println("The carnival manager starts sweating profusifly. Will the attraction make it through inspection?");
+		System.out.println("APPROVED! (Although extra insurance might be a good idea).");
 	}
 }
 
@@ -57,14 +73,33 @@ class Hauntedhousewithmirrors extends Attractie {
 	}
 }
 
-class HawaiiCoconuts extends Attractie {
+class HawaiiCoconuts extends RiskAttraction {
+	public int limit = 0;
 	void play() {
-		System.out.println(this.getName() + " is spinning");
+		if (limit < 9) {
+			System.out.println(this.getName() + " is spinning");
+			limit++;
+		} else {
+			System.out.println("As " + this.getName() + " was spinning, nuts and bolts started flying around.");
+			setUpInspection();
+			limit = 0;
+		}
+	}
+	
+	void setUpInspection() {
+		System.out.println("MAINTENANCE AND INSPECTION!");
+		System.out.println("Inspector wallace grabs his checklist...");
+		System.out.println("The carnival manager starts sweating profusifly. Will the attraction make it through inspection?");
+		System.out.println("APPROVED! (Although extra insurance might be a good idea).");
 	}
 }
 
-class Climbingladders extends Attractie {
+class Climbingladders extends Attractie implements GamblingAttraction {
 	void play() {
 		System.out.println(this.getName() + " is spinning");
+	}
+	
+	public void payGamblingTax() {
+		// 30% van de omzet gaat naar meneer de staat :(
 	}
 }
