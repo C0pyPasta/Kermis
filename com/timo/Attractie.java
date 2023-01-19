@@ -5,7 +5,7 @@ abstract class Attractie {
 	private double price;
 	private double surfaceArea;
 	
-	abstract void draaien();
+	abstract void play();
 	
 	public String getName() {
 		return name;
@@ -33,32 +33,37 @@ abstract class Attractie {
 }
 
 class Ultrabumpercars extends Attractie {
-	void draaien() {
-		System.out.println("Engines start roaring... ");
+	void play() {
+		System.out.println(this.getName() + " is spinning");
 	}
 }
 
 class Turbospin extends Attractie {
-	void draaien() {
+	void play() {
+		System.out.println(this.getName() + " is spinning");
 	}
 }
 
 class Mirrorpalaceofhorrors extends Attractie {
-	void draaien() {
+	void play() {
+		System.out.println(this.getName() + " is spinning");
 	}
 }
 
 class Hauntedhousewithmirrors extends Attractie {
-	void draaien() {
+	void play() {
+		System.out.println(this.getName() + " is spinning");
 	}
 }
 
 class HawaiiCoconuts extends Attractie {
-	void draaien() {
+	void play() {
+		System.out.println(this.getName() + " is spinning");
 	}
 }
 
 class Climbingladders extends Attractie {
-	void draaien() {
+	void play() {
+		System.out.println(this.getName() + " is spinning");
 	}
 }
