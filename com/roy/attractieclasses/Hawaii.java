@@ -29,13 +29,13 @@ public class Hawaii extends Attractie
 	
 	public void draaien()
 	{
-		System.out.println("Draaien als Hawaii.");
-		omzet += prijs;
-		kaartjesVerkocht++;
-		
 		if(draaiLimiet >= 1)
 		{
 			--draaiLimiet;
+			
+			System.out.println("Draaien als Hawaii.");
+			omzet += prijs;
+			kaartjesVerkocht++;
 		}
 		else
 		{
@@ -50,7 +50,8 @@ public class Hawaii extends Attractie
 	
 	private void onderhoudsbeurt()
 	{
-		System.out.println("Tijd voor een onderhoudsbeurt!");
+		System.out.println("Sorry, maar de attractie is tijdelijk gesloten!");
+		System.out.println("Het is tijd voor een onderhoudsbeurt.");
 		System.out.println("Fix..Fix..Fix..Fix..Fix..");
 		System.out.println("Onderhoudsbeurt is klaar!");
 		draaiLimiet = 10;
