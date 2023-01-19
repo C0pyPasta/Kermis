@@ -4,7 +4,8 @@ abstract class Attractie {
 	private String name;
 	private double price;
 	private double surfaceArea;
-	
+	public CashRegister cashRegister = new CashRegister();
+		
 	abstract void play();
 	
 	public String getName() {
