@@ -25,9 +25,6 @@ public class Applicatie
 		Scanner scanner = new Scanner(System.in);
 		
 		
-
-		
-		
 		while(programRunning)
 		{
 			Menu();

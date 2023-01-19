@@ -4,13 +4,16 @@ import Kermis.com.roy.attractieclasses.*;
 
 public class Kassa 
 {
-	
+
 	Botsauto bots = new Botsauto();
 	Spin spin = new Spin();
 	Spiegelpaleis spiegel = new Spiegelpaleis();
 	Spookhuis spook = new Spookhuis();
 	Hawaii hawaii = new Hawaii();
 	Ladderklimmen ladder = new Ladderklimmen();
+
+
+	
 	
 	
 	double omzetHeleKermis;
@@ -42,12 +45,12 @@ public class Kassa
 	
 	public void Kaartjes()
 	{
-		kaartjesBotsauto += bots.getKaartjesVerkocht();
-		kaartjesSpin += spin.getKaartjesVerkocht();
-		kaartjesSpiegelpaleis += spiegel.getKaartjesVerkocht();
-		kaartjesSpookhuis += spook.getKaartjesVerkocht();
-		kaartjesHawaii += hawaii.getKaartjesVerkocht();
-		kaartjesLadderklimmen += ladder.getKaartjesVerkocht();
+		kaartjesBotsauto = bots.getKaartjesVerkocht();
+		kaartjesSpin = spin.getKaartjesVerkocht();
+		kaartjesSpiegelpaleis = spiegel.getKaartjesVerkocht();
+		kaartjesSpookhuis = spook.getKaartjesVerkocht();
+		kaartjesHawaii = hawaii.getKaartjesVerkocht();
+		kaartjesLadderklimmen = ladder.getKaartjesVerkocht();
 		
 		totaalAantalVerkochteKaartjes = kaartjesBotsauto + kaartjesSpin + kaartjesSpiegelpaleis + kaartjesSpookhuis + kaartjesHawaii + kaartjesLadderklimmen;
 		
