@@ -10,4 +10,9 @@ public abstract class Attractie
 	
 	
 	abstract void draaien();
+	
+	public void opstellingsKeuring()
+	{
+		
+	}
 }
