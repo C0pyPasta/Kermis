@@ -5,13 +5,19 @@ public class Botsauto extends Attractie
 	private String naam;
 	private double prijs;
 	private int oppervlakte;
-	private double omzet;
-	private int kaartjesVerkocht;
+	private static double omzet = 0;
+	private static int kaartjesVerkocht = 0;
 	
-	// Getters & Setters maken 
-	// zodat Kassa de totaal omzet kan krijgen
-	// door van elk object de Getter aan te roepen
-	// en die bij elkaar op te tellen.
+	public double getOmzet()
+	{
+		return omzet;
+	}
+	
+	public int getKaartjesVerkocht()
+	{
+		return kaartjesVerkocht;
+	}
+	
 	
 	
 	public Botsauto()
@@ -19,8 +25,6 @@ public class Botsauto extends Attractie
 		naam = "Botsauto";
 		prijs = 2.50d;
 		oppervlakte = 20;
-		omzet = 0;
-		kaartjesVerkocht = 0;
 	}
 	
 	public void draaien()
@@ -28,7 +32,5 @@ public class Botsauto extends Attractie
 		System.out.println("De bots auto's draaien!");
 		omzet += prijs;
 		kaartjesVerkocht++;
-		System.out.println(prijs);
-		System.out.println(kaartjesVerkocht);
 	}
 }

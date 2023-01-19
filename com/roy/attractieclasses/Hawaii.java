@@ -2,11 +2,21 @@ package Kermis.com.roy.attractieclasses;
 
 public class Hawaii extends Attractie
 {
-	public String naam;
-	public double prijs;
-	public int oppervlakte;
-	public double omzet;
-	public int kaartjesVerkocht;
+	private String naam;
+	private double prijs;
+	private int oppervlakte;
+	private static double omzet = 0;
+	private static int kaartjesVerkocht = 0;
+	
+	public double getOmzet()
+	{
+		return omzet;
+	}
+	
+	public int getKaartjesVerkocht()
+	{
+		return kaartjesVerkocht;
+	}
 	
 	public Hawaii()
 	{
@@ -18,5 +28,7 @@ public class Hawaii extends Attractie
 	public void draaien()
 	{
 		System.out.println("Draaien als Hawaii.");
+		omzet += prijs;
+		kaartjesVerkocht++;
 	}
 }
