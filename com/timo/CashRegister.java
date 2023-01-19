@@ -3,17 +3,16 @@ package Kermis.com.timo;
 public class CashRegister {
 	private double revenue;
 	private int ticketsSold;
-	static private double totalRevenue;
-	static private int totalTicketsSold;
+	private static double totalRevenue;
+	private static int totalTicketsSold;
 		
 	public double getRevenue() {
 		return revenue;
 	}
 
 	public void setRevenue(double revenue) {
-		double result = this.revenue + revenue;
+		this.revenue += revenue;
 		setTotalRevenue(revenue);
-		this.revenue = result;
 	}
 
 	public int getTicketsSold() {
@@ -21,9 +20,8 @@ public class CashRegister {
 	}
 
 	public void setTicketsSold(int ticketsSold) {
-		int result = this.ticketsSold + ticketsSold;
+		this.ticketsSold += ticketsSold;
 		setTotalTicketsSold(ticketsSold);
-		this.ticketsSold = result;
 	}
 
 	public static double getTotalRevenue() {
@@ -31,8 +29,7 @@ public class CashRegister {
 	}
 
 	public void setTotalRevenue(double totalRevenue) {
-		double result = this.totalRevenue + totalRevenue;
-		this.totalRevenue = result;
+		this.totalRevenue += totalRevenue;
 	}
 
 	public static int getTotalTicketsSold() {
@@ -40,8 +37,7 @@ public class CashRegister {
 	}
 
 	public void setTotalTicketsSold(int totalTicketsSold) {
-		int result = this.totalTicketsSold + totalTicketsSold;
-		this.totalTicketsSold = result;
+		this.totalTicketsSold += totalTicketsSold;
 	}
 	
 	
