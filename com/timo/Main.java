@@ -109,7 +109,7 @@ class Kermis {
 		
 		String playerChoice = input.next();
 		
-		switch (playerChoice) {
+		switch (playerChoice.toLowerCase()) {
 			case "1":
 				startAttraction(bumperCars);
 				break;
@@ -148,7 +148,7 @@ class Kermis {
 		
 		String menuChoice = input.next();
 		
-		switch (menuChoice) {
+		switch (menuChoice.toLowerCase()) {
 		case "o":
 			showRevenue();
 			break;
@@ -181,10 +181,16 @@ class Kermis {
 		System.out.println("Press 'o' for revenue");
 		System.out.println("Press 'b' to go back");
 		String input2 = Main.input.next();
-		if (input2.toLowerCase().equals("b")) {
-			backEnd();
-		} else if (input2.toLowerCase().equals("o")) {
+		switch (input2.toLowerCase()) {
+		case "o":
 			showRevenue();
+			break;
+		case "k": 
+			showTicketSales();
+			break;
+		default: 
+			System.out.println("Wrong!");
+			showTicketSales();
 		}
 	}
 	
@@ -203,9 +209,15 @@ class Kermis {
 		System.out.println("Press 'k' for ticketsales");
 		System.out.println("Press 'b' to go back");
 		String input = Main.input.next();
-		if (input.toLowerCase().equals("b")) {
-			backEnd();
-		} else if (input.toLowerCase().equals("k")) {
+		switch (input.toLowerCase()) {
+		case "o":
+			showRevenue();
+			break;
+		case "k": 
+			showTicketSales();
+			break;
+		default: 
+			System.out.println("Wrong!");
 			showTicketSales();
 		}
 	}
