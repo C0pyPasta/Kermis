@@ -12,26 +12,26 @@ public class BelastingInspecteur
 	Hawaii hawaii;
 	Ladderklimmen ladder;
 	
-	static double steelBelasting = 0;
+	double steelBelasting = 0;
 	boolean isGokAttractie;
 	
-	public BelastingInspecteur()
+	public BelastingInspecteur(Spin spin, Ladderklimmen ladder)
 	{
-		Ladderklimmen.kansSpelBelastingBetalen();
-		Spin.kansSpelBelastingBetalen();
-				
+		this.spin = spin;
+		this.ladder = ladder;
 		
-		
+		this.spin.kansSpelBelastingBetalen();
+		this.ladder.kansSpelBelastingBetalen();
 	}
 	
 	private void NeemtBelasting()
 	{
-		steelBelasting = Ladderklimmen.getBelasting();
-		steelBelasting += Spin.getBelasting();
+		steelBelasting = ladder.getBelasting();
+		steelBelasting += spin.getBelasting();
 		
-		System.out.println(steelBelasting);
-		Ladderklimmen.setBelasting();
-		Spin.setBelasting();
+		System.out.println("Belasting: " + steelBelasting);
+		ladder.setBelasting();
+		spin.setBelasting();
 			
 	}
 	

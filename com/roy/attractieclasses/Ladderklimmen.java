@@ -4,49 +4,34 @@ import Kermis.com.roy.interfaces.*;
 
 public class Ladderklimmen extends Attractie implements GokAttractie
 {
-	private String naam;
-	private double prijs;
-	private int oppervlakte;
-	private static double omzet = 0;
-	private static int kaartjesVerkocht = 0;
 	private static double belasting = 0;
-	
-	public static double getOmzet()
-	{
-		return omzet;
-	}
-	
-	public static int getKaartjesVerkocht()
-	{
-		return kaartjesVerkocht;
-	}
-	
-	public static double getBelasting()
+		
+	public double getBelasting()
 	{
 		return belasting;
 	}
 	
-	public static void setBelasting()
+	public void setBelasting()
 	{
 		belasting = 0;
 	}
 	
-	public Ladderklimmen()
+	public Ladderklimmen(String naam, double prijs, int oppervlakte)
 	{
-		naam = "Ladderklimmen";
-		prijs = 5.0d;
-		oppervlakte = 1;
+		setNaam(naam);
+		setPrijs(prijs);
+		setOppervlakte(oppervlakte);
 	}
 	
 	public void draaien()
 	{
 		System.out.println("Ik draai ondersteboven tijdens het ladderklimmen");
-		omzet += prijs;
-		kaartjesVerkocht++;
+		setOmzet(getOmzet() + getPrijs());
+		setKaartjesVerkocht(getKaartjesVerkocht() + 1);
 	}
 	
-	public static void kansSpelBelastingBetalen()
+	public void kansSpelBelastingBetalen()
 	{
-		belasting = (omzet / 100) * 30;
+		belasting = (getOmzet() / 100) * 30;
 	}
 }
