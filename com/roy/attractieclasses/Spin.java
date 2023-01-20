@@ -4,39 +4,25 @@ import Kermis.com.roy.interfaces.*;
 
 public class Spin extends Attractie implements GokAttractie
 {
-	private String naam;
-	private double prijs;
-	private int oppervlakte;
-	private static double omzet = 0;
-	private static int kaartjesVerkocht = 0;
 	private int draaiLimiet = 5;
 	private static double belasting = 0;
 	
-	public static double getOmzet()
-	{
-		return omzet;
-	}
 	
-	public static int getKaartjesVerkocht()
-	{
-		return kaartjesVerkocht;
-	}
-	
-	public static double getBelasting()
+	public double getBelasting()
 	{
 		return belasting;
 	}
 	
-	public static void setBelasting()
+	public void setBelasting()
 	{
 		belasting = 0;
 	}
 	
-	public Spin()
+	public Spin(String naam, double prijs, int oppervlakte)
 	{
-		naam = "Spin";
-		prijs = 2.25d;
-		oppervlakte = 1;
+		setNaam(naam);
+		setPrijs(prijs);
+		setOppervlakte(oppervlakte);
 		opstellingsKeuring();
 	}
 	
@@ -47,8 +33,8 @@ public class Spin extends Attractie implements GokAttractie
 			--draaiLimiet;
 			
 			System.out.println("De Spin draait!");
-			omzet += prijs;
-			kaartjesVerkocht++;
+			setOmzet(getOmzet() + getPrijs());
+			setKaartjesVerkocht(getKaartjesVerkocht() + 1);
 		}
 		else
 		{
@@ -72,8 +58,8 @@ public class Spin extends Attractie implements GokAttractie
 		draaiLimiet = 5;
 	}
 	
-	public static void kansSpelBelastingBetalen() 
+	public void kansSpelBelastingBetalen() 
 	{
-		belasting = (omzet / 100) * 30;
+		belasting = (getOmzet() / 100) * 30;
 	}
 }

@@ -6,14 +6,14 @@ import Kermis.com.roy.centraal.*;
 
 public class Applicatie 
 {
-	Kassa kassa = new Kassa();
+	Botsauto bots = new Botsauto("Botsauto", 2.50d, 20);
+	Spin spin = new Spin("Spin", 2.25d, 1);
+	Spiegelpaleis spiegel = new Spiegelpaleis("Spiegelpaleis", 2.75d, 50);
+	Spookhuis spook = new Spookhuis("Spookhuis", 3.20d, 42);
+	Hawaii hawaii = new Hawaii("Hawaii", 2.90d, 23);
+	Ladderklimmen ladder = new Ladderklimmen("Ladderklimmen", 5.0d, 1);
 	
-	Botsauto bots = new Botsauto();
-	Spin spin = new Spin();
-	Spiegelpaleis spiegel = new Spiegelpaleis();
-	Spookhuis spook = new Spookhuis();
-	Hawaii hawaii = new Hawaii();
-	Ladderklimmen ladder = new Ladderklimmen();
+	Kassa kassa = new Kassa(bots, spin, spiegel, spook, hawaii, ladder);
 	
 	static String keuze;
 	static boolean programRunning = true;
@@ -24,14 +24,20 @@ public class Applicatie
 	public static void main(String[] args)
 	{
 		Applicatie app = new Applicatie();
-		Scanner scanner = new Scanner(System.in);
+		app.Herhaling();
 		
+		
+	}
+	
+	private void Herhaling()
+	{
+		Scanner scanner = new Scanner(System.in);
 		
 		while(programRunning)
 		{
 			if(rondjesVoorBelastingInspecteur >= 15)
 			{
-				BelastingInspecteur belastingInspecteur = new BelastingInspecteur();
+				BelastingInspecteur belastingInspecteur = new BelastingInspecteur(spin, ladder);
 				Kassa.aantalKeerDatBelastingInspecteurIsLangsGeweest++;
 				belastingInspecteur.CheckGokAttractie();
 				
@@ -41,7 +47,7 @@ public class Applicatie
 			
 			Menu();
 			keuze = scanner.next();
-			app.Keuze(keuze);
+			Keuze(keuze);
 
 
 			System.out.println(" ");
@@ -63,6 +69,7 @@ public class Applicatie
 				System.exit(0);
 			}
 		}
+
 	}
 	
 	private static void Menu()

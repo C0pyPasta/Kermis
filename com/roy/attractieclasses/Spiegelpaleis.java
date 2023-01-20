@@ -1,35 +1,19 @@
 package Kermis.com.roy.attractieclasses;
 
 public class Spiegelpaleis extends Attractie
-{
-	private String naam;
-	private double prijs;
-	private int oppervlakte;
-	private static double omzet = 0;
-	private static int kaartjesVerkocht = 0;
-	
-	public static double getOmzet()
+{	
+	public Spiegelpaleis(String naam, double prijs, int oppervlakte)
 	{
-		return omzet;
-	}
-	
-	public static int getKaartjesVerkocht()
-	{
-		return kaartjesVerkocht;
-	}
-	
-	public Spiegelpaleis()
-	{
-		naam = "Spiegelpaleis";
-		prijs = 2.75d;
-		oppervlakte = 50;
+		setNaam(naam);
+		setPrijs(prijs);
+		setOppervlakte(oppervlakte);
 	}
 	
 	
 	public void draaien()
 	{
 		System.out.println("Wij draaien rond in het Spiegelpaleis");
-		omzet += prijs;
-		kaartjesVerkocht++;
+		setOmzet(getOmzet() + getPrijs());
+		setKaartjesVerkocht(getKaartjesVerkocht() + 1);
 	}
 }
