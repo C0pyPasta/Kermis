@@ -1,8 +1,13 @@
 package Kermis.com.timo;
 
+import java.util.ArrayList;
+
 public class CashRegister {
 	private double revenue;
 	private int ticketsSold;
+	private TaxCollector taxCollector = new TaxCollector();
+	private boolean taxCollected;
+
 	private static double totalRevenue;
 	private static int totalTicketsSold;
 		
@@ -40,5 +45,18 @@ public class CashRegister {
 		this.totalTicketsSold += totalTicketsSold;
 	}
 	
+	public boolean isTaxCollected() {
+		return taxCollected;
+	}
+
+	public void setTaxCollected(boolean taxCollected) {
+		this.taxCollected = taxCollected;
+	}
+	
+	public void giveLedger(ArrayList<Attractie> arrayList) {
+		System.out.println("Financial worker: *Cowers in fear* and hands over ledger. ");
+		taxCollector.collectTax(arrayList);
+		setTaxCollected(true);
+	}
 	
 }
