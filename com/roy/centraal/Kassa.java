@@ -36,6 +36,10 @@ public class Kassa
 	
 	public void TotaalOmzetKermis()
 	{
+		/* hij pakt steeds de omzet die er al is. plus het zelfde.
+		 * dus als ik 5 euro er in heb. en ik vraag 3x achter elkaar om het TotaalOmzet
+		 * dan telt hij het bij elkaar op, en dit moet natuurlijk niet.
+		 */
 		omzetHeleKermis += bots.getOmzet();
 		omzetHeleKermis += spin.getOmzet();
 		omzetHeleKermis += spiegel.getOmzet();

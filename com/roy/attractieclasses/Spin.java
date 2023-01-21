@@ -1,10 +1,10 @@
 package Kermis.com.roy.attractieclasses;
 
 import Kermis.com.roy.interfaces.*;
+import Kermis.com.roy.exceptions.*;
 
 public class Spin extends Attractie implements GokAttractie
 {
-	private int draaiLimiet = 5;
 	private static double belasting = 0;
 	
 	
@@ -18,19 +18,20 @@ public class Spin extends Attractie implements GokAttractie
 		belasting = 0;
 	}
 	
-	public Spin(String naam, double prijs, int oppervlakte)
+	public Spin(String naam, double prijs, int oppervlakte, int draaiLimiet)
 	{
 		setNaam(naam);
 		setPrijs(prijs);
 		setOppervlakte(oppervlakte);
+		setDraaiLimiet(draaiLimiet);
 		opstellingsKeuring();
 	}
 	
-	public void draaien()
+	public void draaien() throws KaartjesExceptions
 	{
-		if(draaiLimiet >= 1)
+		if(getDraaiLimiet() > 0)
 		{
-			--draaiLimiet;
+			setDraaiLimiet(getDraaiLimiet() - 1);
 			
 			System.out.println("De Spin draait!");
 			setOmzet(getOmzet() + getPrijs());
@@ -41,6 +42,19 @@ public class Spin extends Attractie implements GokAttractie
 			onderhoudsbeurt();
 		}
 		
+		
+		if(getKaartjesVerkocht() == 6)
+		{
+			setKaartjesVerkocht(6);
+			// throw een Exception
+			throw new KaartjesExceptions(6);
+		}
+		else if(getKaartjesVerkocht() == 11)
+		{
+			// throw een Exception
+			throw new KaartjesExceptions(11);
+		}
+		
 	}
 	
 	public void opstellingsKeuring()
@@ -49,13 +63,12 @@ public class Spin extends Attractie implements GokAttractie
 		System.out.println(" ");
 	}
 	
-	private void onderhoudsbeurt()
+	public void onderhoudsbeurt()
 	{
-		System.out.println("Sorry, maar de attractie is tijdelijk gesloten!");
-		System.out.println("Het is tijd voor een onderhoudsbeurt.");
-		System.out.println("Fix..Fix..Fix..Fix..Fix..");
+		System.out.println("Sorry, maar de " + this.getNaam() + " is tijdelijk gesloten voor een onderhoudsbeurt!");
+		System.out.print("Fix..Fix..Fix..Fix..Fix..");
 		System.out.println("Onderhoudsbeurt is klaar!");
-		draaiLimiet = 5;
+		setDraaiLimiet(5);
 	}
 	
 	public void kansSpelBelastingBetalen() 

@@ -1,22 +1,25 @@
 package Kermis.com.roy.attractieclasses;
 
+import Kermis.com.roy.exceptions.KaartjesExceptions;
+
 public class Hawaii extends Attractie
 {
-	private int draaiLimiet = 10;
+	
 		
-	public Hawaii(String naam, double prijs, int oppervlakte)
+	public Hawaii(String naam, double prijs, int oppervlakte, int draaiLimiet)
 	{
 		setNaam(naam);
 		setPrijs(prijs);
 		setOppervlakte(oppervlakte);
+		setDraaiLimiet(draaiLimiet);
 		opstellingsKeuring();
 	}
 	
-	public void draaien()
+	public void draaien() throws KaartjesExceptions
 	{
-		if(draaiLimiet >= 1)
+		if(getDraaiLimiet() > 0)
 		{
-			--draaiLimiet;
+			setDraaiLimiet(getDraaiLimiet() - 1);
 			
 			System.out.println("Draaien als Hawaii.");
 			setOmzet(getOmzet() + getPrijs());
@@ -26,6 +29,20 @@ public class Hawaii extends Attractie
 		{
 			onderhoudsbeurt();
 		}
+		
+
+		if(getKaartjesVerkocht() == 6)
+		{
+			setKaartjesVerkocht(6);
+			// throw een Exception
+			throw new KaartjesExceptions(6);
+		}
+		else if(getKaartjesVerkocht() == 11)
+		{
+			// throw een Exception
+			throw new KaartjesExceptions(11);
+		}
+		
 	}
 	
 	public void opstellingsKeuring()
@@ -34,12 +51,11 @@ public class Hawaii extends Attractie
 		System.out.println(" ");
 	}
 	
-	private void onderhoudsbeurt()
+	public void onderhoudsbeurt()
 	{
-		System.out.println("Sorry, maar de attractie is tijdelijk gesloten!");
-		System.out.println("Het is tijd voor een onderhoudsbeurt.");
-		System.out.println("Fix..Fix..Fix..Fix..Fix..");
+		System.out.println("Sorry, maar de " + this.getNaam() + " is tijdelijk gesloten voor een onderhoudsbeurt!");
+		System.out.print("Fix..Fix..Fix..Fix..Fix..");
 		System.out.println("Onderhoudsbeurt is klaar!");
-		draaiLimiet = 10;
+		setDraaiLimiet(10);
 	}
 }
