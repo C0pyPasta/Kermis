@@ -13,9 +13,7 @@ public class BelastingInspecteur
 	Ladderklimmen ladder;
 	
 	double steelBelasting = 0;
-	boolean isGokAttractie;
 	
-	// Attractie[] attracties = new Attractie[]{Botsauto,spin,spiegel,spook,hawaii,ladder};
 	
 	public BelastingInspecteur(Spin spin, Ladderklimmen ladder)
 	{
@@ -26,6 +24,9 @@ public class BelastingInspecteur
 		this.ladder.kansSpelBelastingBetalen();
 	}
 	
+	/***
+	 * De BelastingInspecteur steelt het geld van de Attracties
+	 */
 	private void NeemtBelasting()
 	{
 		steelBelasting = ladder.getBelasting();
@@ -35,76 +36,26 @@ public class BelastingInspecteur
 			
 	}
 	
-	public void CheckGokAttractie()
+	/***
+	 * De BelastingInspecteur kijkt of er GokAttracties zijn
+	 * @param bots
+	 * @param spin
+	 * @param spiegel
+	 * @param spook
+	 * @param hawaii
+	 * @param ladder
+	 */
+	public void CheckGokAttractie(Botsauto bots, Spin spin, Spiegelpaleis spiegel, Spookhuis spook, Hawaii hawaii, Ladderklimmen ladder)
 	{
-		/*
+		Attractie[] attracties = new Attractie[]{bots,spin,spiegel,spook,hawaii,ladder};
+		
 		for(Attractie a : attracties)
 		{
 			if(a instanceof GokAttractie)
 			{
-				System.out.println("neemt belasting, het werkt!");
 				NeemtBelasting();
 			}
 		}
-		*/
-		
-		
-		if(bots instanceof GokAttractie)
-		{
-			isGokAttractie = true;
-		}
-		else
-		{
-			isGokAttractie = false;
-		}
-		
-		if(spin instanceof GokAttractie)
-		{
-			isGokAttractie = true;
-			NeemtBelasting();
-		}
-		else
-		{
-			isGokAttractie = false;
-		}
-		
-		if(spiegel instanceof GokAttractie)
-		{
-			isGokAttractie = true;
-		}
-		else
-		{
-			isGokAttractie = false;
-		}
-		
-		if(spook instanceof GokAttractie)
-		{
-			isGokAttractie = true;
-		}
-		else
-		{
-			isGokAttractie = false;
-		}
-		
-		if(hawaii instanceof GokAttractie)
-		{
-			isGokAttractie = true;
-		}
-		else
-		{
-			isGokAttractie = false;
-		}
-		
-		if(ladder instanceof GokAttractie)
-		{
-			isGokAttractie = true;
-			NeemtBelasting();
-		}
-		else
-		{
-			isGokAttractie = false;
-		}
-		
 		
 		ResetBelasting();
 		

@@ -4,8 +4,6 @@ import Kermis.com.roy.exceptions.KaartjesExceptions;
 
 public class Hawaii extends Attractie
 {
-	
-		
 	public Hawaii(String naam, double prijs, int oppervlakte, int draaiLimiet)
 	{
 		setNaam(naam);
@@ -15,6 +13,10 @@ public class Hawaii extends Attractie
 		opstellingsKeuring();
 	}
 	
+	/***
+	 * draaien() heeft een draaiLimiet voordat hij een onderhoudsbeurt nodig heeft.
+	 */
+	@Override
 	public void draaien() throws KaartjesExceptions
 	{
 		if(getDraaiLimiet() > 0)
@@ -34,17 +36,16 @@ public class Hawaii extends Attractie
 		if(getKaartjesVerkocht() == 6)
 		{
 			setKaartjesVerkocht(6);
-			// throw een Exception
 			throw new KaartjesExceptions(6);
 		}
 		else if(getKaartjesVerkocht() == 11)
 		{
-			// throw een Exception
 			throw new KaartjesExceptions(11);
 		}
 		
 	}
-	
+
+	@Override
 	public void opstellingsKeuring()
 	{
 		System.out.println("De Hawaii attractie is goedgekeurd.");

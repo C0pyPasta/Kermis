@@ -19,7 +19,7 @@ public class Applicatie
 	static String keuze;
 	static boolean programRunning = true;
 	
-	static int rondjesVoorBelastingInspecteur = 14;
+	static int rondjesVoorBelastingInspecteur = 0;
 	
 	
 	public static void main(String[] args)
@@ -30,6 +30,10 @@ public class Applicatie
 		
 	}
 	
+	
+	/***
+	 * Zorgt ervoor dat het programma open blijft, en zichzelf blijft herhalen.
+	 */
 	private void Herhaling()
 	{
 		Scanner scanner = new Scanner(System.in);
@@ -40,7 +44,7 @@ public class Applicatie
 			{
 				BelastingInspecteur belastingInspecteur = new BelastingInspecteur(spin, ladder);
 				Kassa.aantalKeerDatBelastingInspecteurIsLangsGeweest++;
-				belastingInspecteur.CheckGokAttractie();
+				belastingInspecteur.CheckGokAttractie(bots, spin, spiegel, spook, hawaii, ladder);
 				
 				rondjesVoorBelastingInspecteur = 0;
 			}
@@ -73,6 +77,11 @@ public class Applicatie
 
 	}
 	
+	
+	/***
+	 * Het hoofd Menu waarbij tekst wordt geschreven op het scherm, 
+	 * om de gebruiker een keuze te geven.
+	 */
 	private static void Menu()
 	{
 		System.out.println("Maak een keuze:");
@@ -90,6 +99,11 @@ public class Applicatie
 		System.out.println("=============================================================");
 	}
 	
+	
+	/***
+	 * Geeft de gebruiker de keuze wat zij willen gaan doen.
+	 * @param keuze
+	 */
 	private void Keuze(String keuze)
 	{
 		try
@@ -121,12 +135,16 @@ public class Applicatie
 					kassa.Kaartjes();
 					break;
 				case "m":
+					System.out.println("De monteur gaat zijn keuring doen.");
 					spin.onderhoudsbeurt();
 					hawaii.onderhoudsbeurt();
 					break;
 				case "q":
 					System.out.println("Het programma is gestopt...");
 					System.exit(0);
+					break;
+				default:
+					System.out.println("Weet u zeker dat u de juiste invoer opgeeft?");
 					break;
 			}
 		}
