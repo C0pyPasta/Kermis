@@ -1,79 +1,84 @@
 package Kermis.com.roy.attractieclasses;
 
 import Kermis.com.roy.interfaces.*;
+import Kermis.com.roy.exceptions.*;
 
 public class Spin extends Attractie implements GokAttractie
 {
-	private String naam;
-	private double prijs;
-	private int oppervlakte;
-	private static double omzet = 0;
-	private static int kaartjesVerkocht = 0;
-	private int draaiLimiet = 5;
-	private static double belasting = 0;
+	private static double belasting;
 	
-	public static double getOmzet()
-	{
-		return omzet;
-	}
 	
-	public static int getKaartjesVerkocht()
-	{
-		return kaartjesVerkocht;
-	}
-	
-	public static double getBelasting()
+	public double getBelasting()
 	{
 		return belasting;
 	}
 	
-	public static void setBelasting()
+	public void setBelasting()
 	{
 		belasting = 0;
 	}
 	
-	public Spin()
+	
+	public Spin(String naam, double prijs, int oppervlakte, int draaiLimiet)
 	{
-		naam = "Spin";
-		prijs = 2.25d;
-		oppervlakte = 1;
+		belasting = 0;
+		setNaam(naam);
+		setPrijs(prijs);
+		setOppervlakte(oppervlakte);
+		setDraaiLimiet(draaiLimiet);
 		opstellingsKeuring();
 	}
 	
-	public void draaien()
+	/***
+	 * draaien() heeft een draaiLimiet voordat hij een onderhoudsbeurt nodig heeft.
+	 */
+
+	@Override
+	public void draaien() throws KaartjesExceptions
 	{
-		if(draaiLimiet >= 1)
+		if(getDraaiLimiet() > 0)
 		{
-			--draaiLimiet;
+			setDraaiLimiet(getDraaiLimiet() - 1);
 			
 			System.out.println("De Spin draait!");
-			omzet += prijs;
-			kaartjesVerkocht++;
+			setOmzet(getOmzet() + getPrijs());
+			setKaartjesVerkocht(getKaartjesVerkocht() + 1);
 		}
 		else
 		{
 			onderhoudsbeurt();
 		}
 		
+		
+		if(getKaartjesVerkocht() == 6)
+		{
+			setKaartjesVerkocht(6);
+			throw new KaartjesExceptions(6);
+		}
+		else if(getKaartjesVerkocht() == 11)
+		{
+			throw new KaartjesExceptions(11);
+		}
+		
 	}
 	
+	@Override
 	public void opstellingsKeuring()
 	{
 		System.out.println("De Spin attractie is goedgekeurd.");
 		System.out.println(" ");
 	}
 	
-	private void onderhoudsbeurt()
+	public void onderhoudsbeurt()
 	{
-		System.out.println("Sorry, maar de attractie is tijdelijk gesloten!");
-		System.out.println("Het is tijd voor een onderhoudsbeurt.");
-		System.out.println("Fix..Fix..Fix..Fix..Fix..");
+		System.out.println("Sorry, maar de " + this.getNaam() + " is tijdelijk gesloten voor een onderhoudsbeurt!");
+		System.out.print("Fix..Fix..Fix..Fix..Fix..");
 		System.out.println("Onderhoudsbeurt is klaar!");
-		draaiLimiet = 5;
+		setDraaiLimiet(5);
 	}
 	
-	public static void kansSpelBelastingBetalen() 
+	public void kansSpelBelastingBetalen() 
 	{
-		belasting = (omzet / 100) * 30;
+		belasting = (getOmzet() / 100) * 30;
 	}
 }

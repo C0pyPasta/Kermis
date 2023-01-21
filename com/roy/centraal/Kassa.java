@@ -13,6 +13,7 @@ public class Kassa
 	Ladderklimmen ladder;
 
 	double omzetHeleKermis;
+	double omzetPlaceHolder;
 	int totaalAantalVerkochteKaartjes;
 	int kaartjesBotsauto;
 	int kaartjesSpin;
@@ -23,32 +24,46 @@ public class Kassa
 	public static int aantalKeerDatBelastingInspecteurIsLangsGeweest = 0;
 	
 
-	public Kassa()
-	{		
-		
+	public Kassa(Botsauto bots, Spin spin, Spiegelpaleis spiegel, Spookhuis spook, Hawaii hawaii, Ladderklimmen ladder)
+	{
+		this.bots = bots;
+		this.spin = spin;
+		this.spiegel = spiegel;
+		this.spook = spook;
+		this.hawaii = hawaii;
+		this.ladder = ladder;
 	}
 	
-	
+	/***
+	 * Print het totaal omzet van alle Attracties.
+	 */
 	public void TotaalOmzetKermis()
 	{
-		omzetHeleKermis += Botsauto.getOmzet();
-		omzetHeleKermis += Spin.getOmzet();
-		omzetHeleKermis += Spiegelpaleis.getOmzet();
-		omzetHeleKermis += Spookhuis.getOmzet();
-		omzetHeleKermis += Hawaii.getOmzet();
-		omzetHeleKermis += Ladderklimmen.getOmzet();
+		omzetPlaceHolder += bots.getOmzet();
+		omzetPlaceHolder += spin.getOmzet();
+		omzetPlaceHolder += spiegel.getOmzet();
+		omzetPlaceHolder += spook.getOmzet();
+		omzetPlaceHolder += hawaii.getOmzet();
+		omzetPlaceHolder += ladder.getOmzet();
+		
+		omzetHeleKermis = omzetPlaceHolder;
+		omzetPlaceHolder = 0;
 		
 		System.out.println("De totaal omzet van de hele kermis is: " + omzetHeleKermis);
 	}
 	
+	
+	/***
+	 * Print hoeveel kaartjes er zijn verkocht per Attractie.
+	 */
 	public void Kaartjes()
 	{
-		kaartjesBotsauto = Botsauto.getKaartjesVerkocht();
-		kaartjesSpin = Spin.getKaartjesVerkocht();
-		kaartjesSpiegelpaleis = Spiegelpaleis.getKaartjesVerkocht();
-		kaartjesSpookhuis = Spookhuis.getKaartjesVerkocht();
-		kaartjesHawaii = Hawaii.getKaartjesVerkocht();
-		kaartjesLadderklimmen = Ladderklimmen.getKaartjesVerkocht();
+		kaartjesBotsauto = bots.getKaartjesVerkocht();
+		kaartjesSpin = spin.getKaartjesVerkocht();
+		kaartjesSpiegelpaleis = spiegel.getKaartjesVerkocht();
+		kaartjesSpookhuis = spook.getKaartjesVerkocht();
+		kaartjesHawaii = hawaii.getKaartjesVerkocht();
+		kaartjesLadderklimmen = ladder.getKaartjesVerkocht();
 		
 		totaalAantalVerkochteKaartjes = kaartjesBotsauto + kaartjesSpin + kaartjesSpiegelpaleis + kaartjesSpookhuis + kaartjesHawaii + kaartjesLadderklimmen;
 		
