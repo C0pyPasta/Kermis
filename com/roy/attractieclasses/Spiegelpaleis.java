@@ -9,7 +9,8 @@ public class Spiegelpaleis extends Attractie
 		setOppervlakte(oppervlakte);
 	}
 	
-	
+
+	@Override
 	public void draaien()
 	{
 		System.out.println("Wij draaien rond in het Spiegelpaleis");

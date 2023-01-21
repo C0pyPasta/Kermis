@@ -13,6 +13,7 @@ public class Kassa
 	Ladderklimmen ladder;
 
 	double omzetHeleKermis;
+	double omzetPlaceHolder;
 	int totaalAantalVerkochteKaartjes;
 	int kaartjesBotsauto;
 	int kaartjesSpin;
@@ -33,23 +34,28 @@ public class Kassa
 		this.ladder = ladder;
 	}
 	
-	
+	/***
+	 * Print het totaal omzet van alle Attracties.
+	 */
 	public void TotaalOmzetKermis()
 	{
-		/* hij pakt steeds de omzet die er al is. plus het zelfde.
-		 * dus als ik 5 euro er in heb. en ik vraag 3x achter elkaar om het TotaalOmzet
-		 * dan telt hij het bij elkaar op, en dit moet natuurlijk niet.
-		 */
-		omzetHeleKermis += bots.getOmzet();
-		omzetHeleKermis += spin.getOmzet();
-		omzetHeleKermis += spiegel.getOmzet();
-		omzetHeleKermis += spook.getOmzet();
-		omzetHeleKermis += hawaii.getOmzet();
-		omzetHeleKermis += ladder.getOmzet();
+		omzetPlaceHolder += bots.getOmzet();
+		omzetPlaceHolder += spin.getOmzet();
+		omzetPlaceHolder += spiegel.getOmzet();
+		omzetPlaceHolder += spook.getOmzet();
+		omzetPlaceHolder += hawaii.getOmzet();
+		omzetPlaceHolder += ladder.getOmzet();
+		
+		omzetHeleKermis = omzetPlaceHolder;
+		omzetPlaceHolder = 0;
 		
 		System.out.println("De totaal omzet van de hele kermis is: " + omzetHeleKermis);
 	}
 	
+	
+	/***
+	 * Print hoeveel kaartjes er zijn verkocht per Attractie.
+	 */
 	public void Kaartjes()
 	{
 		kaartjesBotsauto = bots.getKaartjesVerkocht();

@@ -9,7 +9,8 @@ public class Spookhuis extends Attractie
 		setOppervlakte(oppervlakte);
 	}
 	
-	
+
+	@Override
 	public void draaien()
 	{
 		System.out.println("De spook draait rond in zijn Spookhuis");

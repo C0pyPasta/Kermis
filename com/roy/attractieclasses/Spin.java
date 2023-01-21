@@ -5,7 +5,7 @@ import Kermis.com.roy.exceptions.*;
 
 public class Spin extends Attractie implements GokAttractie
 {
-	private static double belasting = 0;
+	private static double belasting;
 	
 	
 	public double getBelasting()
@@ -18,8 +18,10 @@ public class Spin extends Attractie implements GokAttractie
 		belasting = 0;
 	}
 	
+	
 	public Spin(String naam, double prijs, int oppervlakte, int draaiLimiet)
 	{
+		belasting = 0;
 		setNaam(naam);
 		setPrijs(prijs);
 		setOppervlakte(oppervlakte);
@@ -27,6 +29,11 @@ public class Spin extends Attractie implements GokAttractie
 		opstellingsKeuring();
 	}
 	
+	/***
+	 * draaien() heeft een draaiLimiet voordat hij een onderhoudsbeurt nodig heeft.
+	 */
+
+	@Override
 	public void draaien() throws KaartjesExceptions
 	{
 		if(getDraaiLimiet() > 0)
@@ -46,17 +53,16 @@ public class Spin extends Attractie implements GokAttractie
 		if(getKaartjesVerkocht() == 6)
 		{
 			setKaartjesVerkocht(6);
-			// throw een Exception
 			throw new KaartjesExceptions(6);
 		}
 		else if(getKaartjesVerkocht() == 11)
 		{
-			// throw een Exception
 			throw new KaartjesExceptions(11);
 		}
 		
 	}
 	
+	@Override
 	public void opstellingsKeuring()
 	{
 		System.out.println("De Spin attractie is goedgekeurd.");
