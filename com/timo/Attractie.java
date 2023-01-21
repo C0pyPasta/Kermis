@@ -16,7 +16,7 @@ abstract class Attractie {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public double getPrice() {
 		return price;
 	}
@@ -100,6 +100,9 @@ class Climbingladders extends Attractie implements GamblingAttraction {
 	}
 	
 	public void payGamblingTax() {
-		// 30% van de omzet gaat naar meneer de staat :(
+		System.out.println(getName() + " had a total revenue of: €" + cashRegister.getRevenue());
+		double tax = cashRegister.getRevenue() * 0.3;
+		System.out.println("Total tax (30% of revenue) will amount to: €" + tax);
+		cashRegister.setRevenue(-tax);
 	}
 }
