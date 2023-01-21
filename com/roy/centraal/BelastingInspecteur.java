@@ -15,6 +15,8 @@ public class BelastingInspecteur
 	double steelBelasting = 0;
 	boolean isGokAttractie;
 	
+	// Attractie[] attracties = new Attractie[]{Botsauto,spin,spiegel,spook,hawaii,ladder};
+	
 	public BelastingInspecteur(Spin spin, Ladderklimmen ladder)
 	{
 		this.spin = spin;
@@ -30,13 +32,23 @@ public class BelastingInspecteur
 		steelBelasting += spin.getBelasting();
 		
 		System.out.println("Belasting: " + steelBelasting);
-		ladder.setBelasting();
-		spin.setBelasting();
 			
 	}
 	
 	public void CheckGokAttractie()
 	{
+		/*
+		for(Attractie a : attracties)
+		{
+			if(a instanceof GokAttractie)
+			{
+				System.out.println("neemt belasting, het werkt!");
+				NeemtBelasting();
+			}
+		}
+		*/
+		
+		
 		if(bots instanceof GokAttractie)
 		{
 			isGokAttractie = true;
@@ -92,5 +104,15 @@ public class BelastingInspecteur
 		{
 			isGokAttractie = false;
 		}
+		
+		
+		ResetBelasting();
+		
+	}
+	
+	private void ResetBelasting()
+	{
+		ladder.setBelasting();
+		spin.setBelasting();
 	}
 }

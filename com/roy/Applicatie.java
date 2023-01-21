@@ -3,14 +3,15 @@ package Kermis.com.roy;
 import java.util.Scanner;
 import Kermis.com.roy.attractieclasses.*;
 import Kermis.com.roy.centraal.*;
+import Kermis.com.roy.exceptions.KaartjesExceptions;
 
 public class Applicatie 
 {
 	Botsauto bots = new Botsauto("Botsauto", 2.50d, 20);
-	Spin spin = new Spin("Spin", 2.25d, 1);
+	Spin spin = new Spin("Spin", 2.25d, 1, 5);
 	Spiegelpaleis spiegel = new Spiegelpaleis("Spiegelpaleis", 2.75d, 50);
 	Spookhuis spook = new Spookhuis("Spookhuis", 3.20d, 42);
-	Hawaii hawaii = new Hawaii("Hawaii", 2.90d, 23);
+	Hawaii hawaii = new Hawaii("Hawaii", 2.90d, 23, 10);
 	Ladderklimmen ladder = new Ladderklimmen("Ladderklimmen", 5.0d, 1);
 	
 	Kassa kassa = new Kassa(bots, spin, spiegel, spook, hawaii, ladder);
@@ -18,7 +19,7 @@ public class Applicatie
 	static String keuze;
 	static boolean programRunning = true;
 	
-	static int rondjesVoorBelastingInspecteur = 0;
+	static int rondjesVoorBelastingInspecteur = 14;
 	
 	
 	public static void main(String[] args)
@@ -84,42 +85,54 @@ public class Applicatie
 		System.out.println("6: Ladderklimmen");
 		System.out.println("O: Totaal omzet hele kermis.");
 		System.out.println("k: Aantal verkochte kaartjes per attractie, en totaal");
+		System.out.println("m: Monteur keurt en reset de attractie");
 		System.out.println("Q: stopt het programma.");
 		System.out.println("=============================================================");
 	}
 	
 	private void Keuze(String keuze)
 	{
-		switch(keuze.toLowerCase())
+		try
 		{
-			case "1":
-				bots.draaien();
-				break;
-			case "2":
-				spin.draaien();
-				break;
-			case "3":
-				spiegel.draaien();
-				break;
-			case "4":
-				spook.draaien();
-				break;
-			case "5":
-				hawaii.draaien();
-				break;
-			case "6":
-				ladder.draaien();
-				break;
-			case "o":
-				kassa.TotaalOmzetKermis();
-				break;
-			case "k":
-				kassa.Kaartjes();
-				break;
-			case "q":
-				System.out.println("Het programma is gestopt...");
-				System.exit(0);
-				break;
+			switch(keuze.toLowerCase())
+			{
+				case "1":
+					bots.draaien();
+					break;
+				case "2":
+					spin.draaien();
+					break;
+				case "3":
+					spiegel.draaien();
+					break;
+				case "4":
+					spook.draaien();
+					break;
+				case "5":
+					hawaii.draaien();
+					break;
+				case "6":
+					ladder.draaien();
+					break;
+				case "o":
+					kassa.TotaalOmzetKermis();
+					break;
+				case "k":
+					kassa.Kaartjes();
+					break;
+				case "m":
+					spin.onderhoudsbeurt();
+					hawaii.onderhoudsbeurt();
+					break;
+				case "q":
+					System.out.println("Het programma is gestopt...");
+					System.exit(0);
+					break;
+			}
+		}
+		catch(KaartjesExceptions e)
+		{
+			System.out.println(e);
 		}
 		
 		rondjesVoorBelastingInspecteur++;

@@ -1,5 +1,7 @@
 package Kermis.com.roy.attractieclasses;
 
+import Kermis.com.roy.exceptions.KaartjesExceptions;
+
 public abstract class Attractie
 {
 	private String naam;
@@ -7,6 +9,7 @@ public abstract class Attractie
 	private int oppervlakte;
 	private double omzet;
 	private int kaartjesVerkocht;
+	private int draaiLimiet;
 	
 	
 	public String getNaam() 
@@ -59,7 +62,17 @@ public abstract class Attractie
 		this.kaartjesVerkocht = kaartjesVerkocht;
 	}
 
-	abstract void draaien();
+	public int getDraaiLimiet()
+	{
+		return draaiLimiet;
+	}
+
+	public void setDraaiLimiet(int draaiLimiet)
+	{
+		this.draaiLimiet = draaiLimiet;
+	}
+
+	abstract void draaien() throws KaartjesExceptions;
 	
 	public void opstellingsKeuring()
 	{
