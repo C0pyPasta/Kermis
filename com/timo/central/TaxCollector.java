@@ -1,6 +1,9 @@
-package Kermis.com.timo;
+package Kermis.com.timo.central;
 
 import java.util.ArrayList;
+
+import Kermis.com.timo.attracties.Attractie;
+import Kermis.com.timo.interfaces.GamblingAttraction;
 
 public class TaxCollector {
 	public void collectTax(ArrayList<Attractie> arrayList) {
@@ -10,7 +13,6 @@ public class TaxCollector {
 				System.out.println(i.getName() + " appears to be a gambling attraction and must therefore, according to article 14 ehr, pay tax.");
 				((GamblingAttraction) i).payGamblingTax();
 				System.out.println(" ");
-				Main.startMenu();
 			}
 		}
 	}

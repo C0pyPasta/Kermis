@@ -1,4 +1,4 @@
-package Kermis.com.timo;
+package Kermis.com.timo.interfaces;
 
 public interface GamblingAttraction {
 	void payGamblingTax();

@@ -1,12 +1,14 @@
-package Kermis.com.timo;
+package Kermis.com.timo.central;
 
 import java.util.ArrayList;
+
+import Kermis.com.timo.attracties.Attractie;
 
 public class CashRegister {
 	private double revenue;
 	private int ticketsSold;
 	private TaxCollector taxCollector = new TaxCollector();
-	private boolean taxCollected;
+	public int taxCollected;
 
 	private static double totalRevenue;
 	private static int totalTicketsSold;
@@ -45,18 +47,20 @@ public class CashRegister {
 		this.totalTicketsSold += totalTicketsSold;
 	}
 	
-	public boolean isTaxCollected() {
+	public int getTaxCollected() {
 		return taxCollected;
 	}
 
-	public void setTaxCollected(boolean taxCollected) {
-		this.taxCollected = taxCollected;
+	public void setTaxCollected(int taxCollected) {
+		this.taxCollected += taxCollected;
 	}
 	
 	public void giveLedger(ArrayList<Attractie> arrayList) {
 		System.out.println("Financial worker: *Cowers in fear* and hands over ledger. ");
 		taxCollector.collectTax(arrayList);
-		setTaxCollected(true);
+		setTaxCollected(1);
+		System.out.println("Tax is collected " + getTaxCollected() + " times.");
+		System.out.println(" ");
 	}
 	
 }
