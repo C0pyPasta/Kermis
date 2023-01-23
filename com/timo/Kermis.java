@@ -22,9 +22,9 @@ public class Kermis {
 	Kermis() {
 		System.out.println("Attractions are being set up...");
 		constructAttraction(bumperCars, "Ultra Bumpercars", 2.50, 40.00, 0);
-		constructAttraction(turboSpin, "Turbo Spin", 2.50, 30.00, 5);
+		constructAttraction(turboSpin, "Turbo Spin", 2.50, 30.00, 4);
 		constructAttraction(mirrorPalace, "Mirror Palace of Horrors", 2.75, 25.00, 0);
-		constructAttraction(hawaii, "Hawaii Coconuts", 2.90, 15.00, 10);
+		constructAttraction(hawaii, "Hawaii Coconuts", 2.90, 15.00, 9);
 		constructAttraction(hauntedHouse, "Haunted House - Mirror Edition", 3.20, 20.00, 0);
 		constructAttraction(ladders, "Climbing Ladders", 5.00, 15.00, 0);
 		
@@ -47,7 +47,6 @@ public class Kermis {
 	
 	public void startAttraction(Attractie attractie) {
 		System.out.println("You chose: " + attractie.getName());
-		System.out.println(attractie.getLimit());
 		System.out.println("That will be €" + attractie.getPrice() + " please.");
 		attractie.cashRegister.setRevenue(attractie.getPrice());
 		attractie.cashRegister.setTicketsSold(1);

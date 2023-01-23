@@ -27,7 +27,7 @@ public class HawaiiCoconuts extends RiskAttraction {
 		if (input.toLowerCase().equals("m")) {
 			System.out.println("*FIXING SOUNDS*");
 			System.out.println("APPROVED! (Although extra insurance might be a good idea).");
-			this.setLimit(10);
+			this.setLimit(9);
 		} else if (input.toLowerCase().equals("s")) {
 			System.out.println("Attraction will remain broken");
 		} else {
