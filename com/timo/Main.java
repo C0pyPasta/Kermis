@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Main {
 	static Scanner input = new Scanner(System.in);
-	static Kermis kermis = new Kermis();
 
 	public static void main(String[] args) {
 		startMenu();
 	}
 	
 	static public void startMenu() {
+		Kermis kermis = new Kermis();
 		System.out.println("What would you like to do?");
 		System.out.println("1 | Go to the carnival");
 		System.out.println("2 | Staff only");
