@@ -1,90 +1,171 @@
-package Kermis.com.rutger;
+package kermis.com.rutger;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-
-        Kermis.keuzeMenu();
+    public static void main(String[] args) throws MonteursException {
+        new Kermis();
     }
 }
 
 class Kermis {
-    private String keuze;
-    private boolean noChoice = false;
+    Kermis() throws MonteursException {
+        String keuze;
+        int counter = 0;
 
-    Kermis() {
+        BotsAutos botsAutos = new BotsAutos();
+        Spin spin = new Spin();
+        SpiegelPaleis spiegelhuis = new SpiegelPaleis();
+        SpookHuis spookHuis = new SpookHuis();
+        Hawaii hawaii = new Hawaii();
+        LadderKlimmen ladderKlimmen = new LadderKlimmen();
+
+        Kassa kassaKermis = new Kassa();
+
         Scanner sc = new Scanner(System.in);
 
+        keuzeMenu();
+
         do {
-            System.out.println("Maak nu uw keuze:");
-            keuze = sc.next();
-            switch (keuze) {
-                case "1":
-                    BumperCars bumperCars = new BumperCars();
-                    bumperCars.setName("De BotsAuto's");
-                    bumperCars.setPrice(2.50);
-                    bumperCars.setSurface(60.50);
-                    bumperCars.draaien();
-                    break;
-                case "2":
-                    Spin spin = new Spin();
-                    spin.draaien();
-                    break;
-                case "3":
-                    MirrorPalace spiegelhuis = new MirrorPalace();
-                    spiegelhuis.draaien();
-                    break;
-                case "4":
-                    GhostHouse spookHuis = new GhostHouse();
-                    spookHuis.draaien();
-                    break;
-                case "5":
-                    Hawaii hawaii = new Hawaii();
-                    hawaii.draaien();
-                    break;
-                case "6":
-                    LadderClimb ladderKlimmen = new LadderClimb();
-                    ladderKlimmen.draaien();
-                    break;
-                case "o":
-                    System.out.println("Omzet Block");
-                    break;
-                case "k":
-                    System.out.println("Kaartjes Block");
-                    break;
-                case "m":
-                    keuzeMenu();
-                    break;
-                case "q":
-                    System.exit(1);
-                    break;
-                default:
-                    System.out.println("Heb je wel een optie uit het menu gekozen?");
-                    noChoice = true;
+            if (counter == 0) {
+                System.out.println("Omroeper       : Maak nu uw keuze.");
+                System.out.println("Jouw keuze: ");
+                counter++;
+            } else {
+                System.out.println("Omroeper       : Kies nogmaals of ? voor het menu.");
+                System.out.println("Jouw keuze: ");
             }
-        } while (keuze.equals("1") || keuze.equals("2") || keuze.equals("3") || keuze.equals("4") || keuze.equals("5") || keuze.equals("6") || keuze.equals("o") || keuze.equals("k") || noChoice);
+
+            keuze = sc.next();
+
+            switch (keuze) {
+                case "1" -> {
+                    kassaKermis.geldInnen(botsAutos.prijsVanDeRit);
+                    botsAutos.draaien();
+                }
+                case "2" -> {
+                    kassaKermis.geldInnen(spin.prijsVanDeRit);
+                    spin.draaien();
+                }
+                case "3" -> {
+                    kassaKermis.geldInnen(spiegelhuis.prijsVanDeRit);
+                    spiegelhuis.draaien();
+                }
+                case "4" -> {
+                    kassaKermis.geldInnen(spookHuis.prijsVanDeRit);
+                    spookHuis.draaien();
+                }
+                case "5" -> {
+                    kassaKermis.geldInnen(hawaii.prijsVanDeRit);
+                    hawaii.draaien();
+                }
+                case "6" -> {
+                    kassaKermis.geldInnen(ladderKlimmen.prijsVanDeRit);
+                    ladderKlimmen.draaien();
+                }
+                case "o" -> {
+                    System.out.println("\n De Kermis: ");
+                    System.out.println("-------------------------------\n" +
+                            " Totale Omzet:      " + String.format("%6.2f", kassaKermis.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println("""
+
+                             De BotsAuto's:     \s
+                            -------------------------------""");
+                    System.out.println(" Prijs per kaartje: " + String.format("%6.2f", botsAutos.prijsVanDeRit) + " Euro");
+                    System.out.println(" Totale Omzet:      " + String.format("%6.2f", botsAutos.kassaAttractie.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println(" Totale Winst:      " + String.format("%6.2f", botsAutos.kassaAttractie.overzichtTotaleWinst()) + " Euro" +
+                            "\n Tickets verkocht:    " + botsAutos.aantalVerkochteKaartjes() +
+                            "\n Belasting:         " + String.format("%6.2f", botsAutos.kassaAttractie.overzichtAfgedragenBelasting()) + " Euro");
+                    System.out.println("""
+
+                             De Spin:           \s
+                            -------------------------------""");
+                    System.out.println(" Prijs per kaartje: " + String.format("%6.2f", spin.prijsVanDeRit) + " Euro");
+                    System.out.println(" Totale Omzet:      " + String.format("%6.2f", spin.kassaAttractie.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println(" Totale Winst:      " + String.format("%6.2f", spin.kassaAttractie.overzichtTotaleWinst()) + " Euro" +
+                            "\n Tickets verkocht:    " + spin.aantalVerkochteKaartjes() +
+                            "\n belasting:         " + String.format("%6.2f", spin.kassaAttractie.overzichtAfgedragenBelasting()) + " Euro");
+                    System.out.println("""
+
+                             Het SpiegelPaleis: \s
+                            -------------------------------""");
+                    System.out.println(" Prijs per kaartje: " + String.format("%6.2f", spiegelhuis.prijsVanDeRit) + " Euro");
+                    System.out.println(" Totale Omzet:      " + String.format("%6.2f", spiegelhuis.kassaAttractie.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println(" Totale Winst:      " + String.format("%6.2f", spiegelhuis.kassaAttractie.overzichtTotaleWinst()) + " Euro" +
+                            "\n Tickets verkocht:    " + spiegelhuis.aantalVerkochteKaartjes() +
+                            "\n belasting:         " + String.format("%6.2f", spiegelhuis.kassaAttractie.overzichtAfgedragenBelasting()) + " Euro");
+                    System.out.println("""
+
+                             Het SpookHuis      \s
+                            -------------------------------""");
+                    System.out.println(" Prijs per kaartje: " + String.format("%6.2f", spookHuis.prijsVanDeRit) + " Euro");
+                    System.out.println(" Totale Omzet:      " + String.format("%6.2f", spookHuis.kassaAttractie.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println(" Totale Winst:      " + String.format("%6.2f", spookHuis.kassaAttractie.overzichtTotaleWinst()) + " Euro" +
+                            "\n Tickets verkocht:    " + spookHuis.aantalVerkochteKaartjes() +
+                            "\n belasting:         " + String.format("%6.2f", spookHuis.kassaAttractie.overzichtAfgedragenBelasting()) + " Euro");
+                    System.out.println("""
+
+                             De Hawaii           \s
+                            -------------------------------""");
+                    System.out.println(" Prijs per kaartje: " + String.format("%6.2f", hawaii.prijsVanDeRit) + " Euro");
+                    System.out.println(" Totale Omzet:      " + String.format("%6.2f", hawaii.kassaAttractie.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println(" Totale Winst       " + String.format("%6.2f", hawaii.kassaAttractie.overzichtTotaleWinst()) + " Euro" +
+                            "\n Tickets verkocht:    " + hawaii.aantalVerkochteKaartjes() +
+                            "\n belasting:         " + String.format("%6.2f", hawaii.kassaAttractie.overzichtAfgedragenBelasting()) + " Euro");
+                    System.out.println("""
+
+                             Ladder Klimmen      \s
+                            -------------------------------""");
+                    System.out.println(" Prijs per kaartje: " + String.format("%6.2f", ladderKlimmen.prijsVanDeRit) + " Euro");
+                    System.out.println(" Totale Omzet:      " + String.format("%6.2f", ladderKlimmen.kassaAttractie.overzichtTotaleOmzet()) + " Euro");
+                    System.out.println(" Totale Winst:      " + String.format("%6.2f", ladderKlimmen.kassaAttractie.overzichtTotaleWinst()) + " Euro" +
+                            "\n Tickets verkocht:    " + ladderKlimmen.aantalVerkochteKaartjes() +
+                            "\n belasting:         " + String.format("%6.2f", ladderKlimmen.kassaAttractie.overzichtAfgedragenBelasting()) + " Euro" + "\n");
+                }
+                case "k" -> {
+                    System.out.println("\n++++++ Kaartjes ++++++\n");
+                    System.out.println("  Totaal verkocht  :" + kassaKermis.totaalAantalVerkochteKaartjes() + "\n");
+                    System.out.println("    Per Attractie  ");
+                    System.out.println("----------------------");
+                    System.out.println("-BotsAutos        : " + botsAutos.kassaAttractie.totaalAantalVerkochteKaartjes());
+                    System.out.println("-Spin             : " + spin.kassaAttractie.totaalAantalVerkochteKaartjes());
+                    System.out.println("-Spiegel Paleis   : " + spiegelhuis.kassaAttractie.totaalAantalVerkochteKaartjes());
+                    System.out.println("-SpookHuis        : " + spookHuis.kassaAttractie.totaalAantalVerkochteKaartjes());
+                    System.out.println("-Hawaii           : " + hawaii.kassaAttractie.totaalAantalVerkochteKaartjes());
+                    System.out.println("-Ladder Klimmen   : " + ladderKlimmen.kassaAttractie.totaalAantalVerkochteKaartjes());
+                    System.out.println("----------------------\n");
+                }
+                case "m" -> {
+                    Monteur storingsMonteur = new Monteur();
+                    storingsMonteur.storingsMeldingAfhandelen();
+                }
+                case "?" -> keuzeMenu();
+                case "q" -> System.exit(1);
+                default -> System.out.println("Omroeper Kermis: Heb je wel een optie uit het menu gekozen?");
+            }
+        } while (true);
     }
 
     public static void keuzeMenu() {
-        StringBuffer buf = new StringBuffer();
-        buf.append("\n");
-        buf.append("   Hallo en welkom op de com.rutger.Kermis!\n");
-        buf.append("------------------------------------\n");
-        buf.append("U kunt een keuze maken uit:\n");
-        buf.append("1. De Botsauto's\n");
-        buf.append("2. De com.rutger.Spin\n");
-        buf.append("3. Het Spiegelpaleis\n");
-        buf.append("4. Het Spookhuis\n");
-        buf.append("5. De com.rutger.Hawaii\n");
-        buf.append("6. Ladder Klimmen\n");
-        buf.append("o voor de omzet\n");
-        buf.append("k voor het aantal verkochte kaartjes\n");
-        buf.append("m voor het keuze menu\n");
-        buf.append("q for quit");
-        System.out.println(buf);
-        System.out.println("------------------------------------");
+        String buf = """
 
-        new Kermis(); //Maar wil je wel elke keer een nieuwe kermis aanmaken?
+                *** Hallo en welkom op de Kermis ***
+                ++++++++++++++++++++++++++++++++++++
+                U mag een keuze maken uit:
+
+                1. De Botsauto's
+                2. De Spin
+                3. Het Spiegelpaleis
+                4. Het Spookhuis
+                5. De Hawaii
+                6. Ladder Klimmen
+                o. De Omzet
+                k. Aantal verkochte Kaartjes
+                m. De Monteur
+                ?. Het KeuzeMenu
+                q. Om te Stoppen
+                ------------------------------------
+                """;
+        System.out.println(buf);
     }
 }
